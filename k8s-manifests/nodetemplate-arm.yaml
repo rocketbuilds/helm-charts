@@ -1,0 +1,85 @@
+apiVersion: karpenter.k8s.aws/v1alpha1
+kind: AWSNodeTemplate
+metadata:
+  annotations:
+    meta.helm.sh/release-name: bottlerocket-arm64-template
+    meta.helm.sh/release-namespace: karpenter
+  creationTimestamp: '2023-11-17T09:04:26Z'
+  generation: 2
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  managedFields:
+    - apiVersion: karpenter.k8s.aws/v1alpha1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:meta.helm.sh/release-name: {}
+            f:meta.helm.sh/release-namespace: {}
+          f:labels:
+            .: {}
+            f:app.kubernetes.io/managed-by: {}
+        f:spec:
+          .: {}
+          f:amiFamily: {}
+          f:blockDeviceMappings: {}
+          f:securityGroupSelector:
+            .: {}
+            f:Name: {}
+          f:subnetSelector:
+            .: {}
+            f:kubernetes.io/cluster/meskalero-eks-dev-aFpZLcy2: {}
+            f:private_subnet: {}
+          f:tags:
+            .: {}
+            f:Name: {}
+      manager: terraform-provider-helm_v2.6.0_x5
+      operation: Update
+      time: '2023-11-18T17:28:23Z'
+    - apiVersion: karpenter.k8s.aws/v1alpha1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          .: {}
+          f:securityGroups: {}
+          f:subnets: {}
+      manager: karpenter
+      operation: Update
+      subresource: status
+      time: '2024-03-02T17:09:20Z'
+  name: bottlerocket-arm64-template
+  resourceVersion: '659738052'
+  uid: 22cccaf7-2df5-4aab-a21a-709ff9e75607
+  selfLink: >-
+    /apis/karpenter.k8s.aws/v1alpha1/awsnodetemplates/bottlerocket-arm64-template
+status:
+  securityGroups:
+    - id: sg-068fef04010ecd3c2
+  subnets:
+    - id: subnet-00de8d7aead83f228
+      zone: us-west-2c
+    - id: subnet-08ff59ae96b8336c6
+      zone: us-west-2b
+    - id: subnet-0aa94b59ef677190c
+      zone: us-west-2a
+spec:
+  amiFamily: Bottlerocket
+  blockDeviceMappings:
+    - deviceName: /dev/xvda
+      ebs:
+        deleteOnTermination: true
+        volumeSize: 4Gi
+        volumeType: gp3
+    - deviceName: /dev/xvdb
+      ebs:
+        deleteOnTermination: true
+        volumeSize: 20Gi
+        volumeType: gp3
+  securityGroupSelector:
+    Name: meskalero-eks-dev-aFpZLcy2-eks_worker_sg
+  subnetSelector:
+    kubernetes.io/cluster/meskalero-eks-dev-aFpZLcy2: shared
+    private_subnet: 'true'
+  tags:
+    Name: meskalero-eks-dev-aFpZLcy2-karpenter-arm64

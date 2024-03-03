@@ -1,0 +1,5 @@
+apiVersion: v2
+name: karpenter-nodetemplate
+description: A Helm chart for Karpenter AWSNodeTemplate CRD
+version: 0.1.0
+appVersion: "0.27.1"

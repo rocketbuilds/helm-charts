@@ -1,0 +1,39 @@
+{{- if .Values.Provisioner.create }}
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  {{ if .Values.Provisioner.ttlSecondsAfterEmpty }}
+    ttlSecondsAfterEmpty: {{ .Values.Provisioner.ttlSecondsAfterEmpty }}
+  {{- end }}
+  {{ if .Values.Provisioner.ttlSecondsUntilExpired }}
+    ttlSecondsUntilExpired: {{ .Values.Provisioner.ttlSecondsUntilExpired }}
+  {{- end }}
+  {{ if .Values.Provisioner.consolidation.enabled }}
+    consolidation:
+      enabled: {{ .Values.Provisioner.consolidation.enabled }}
+  {{- end }}  
+  {{- with .Values.Provisioner.provider }}
+    providerRef:           # Mention the AWSNodeTemplate name here
+      {{- toYaml . | nindent 6 }}
+  {{- end }}
+  {{- with .Values.Provisioner.taints }}
+    taints:
+      {{- toYaml . | nindent 6 }}
+  {{- end }}
+  {{- with .Values.Provisioner.requirements }}
+    requirements:
+      {{- toYaml . | nindent 6 }}
+  {{- end }}
+  {{- with .Values.Provisioner.labels }}
+    labels:
+      {{- toYaml . | nindent 6 }}
+  {{- end }}
+  {{ if .Values.Provisioner.clusterConstraints.create }}
+    limits:
+      resources:
+        cpu: {{ .Values.Provisioner.clusterConstraints.limits.resources.cpu }}
+        memory: {{ .Values.Provisioner.clusterConstraints.limits.resources.memory }}
+  {{- end }}
+{{- end }}

@@ -1,0 +1,20 @@
+NodeTemplate:
+  create: true
+  subnetSelector: {}
+  securityGroupSelector: {}
+  instanceProfile:     # Optional Overrides the AWS instance profile created by Karpenter Terraform module
+  amiFamily: Bottlerocket
+  amiSelector:          # Optional the exact AMI ID of the instance you want as worker nodes
+  tags:
+    Name: Karpenter-Node-default    # Tags assigned to created EC2 resources (Ex. Name)
+  blockDeviceMappings:  # Optional The CRD automatically allocates these default values, we can override them
+    - deviceName: /dev/xvda
+      ebs:
+        volumeType: gp3
+        volumeSize: 4Gi
+        deleteOnTermination: true
+    - deviceName: /dev/xvdb
+      ebs:
+        volumeType: gp3
+        volumeSize: 20Gi # replace with your required disk size
+        deleteOnTermination: true

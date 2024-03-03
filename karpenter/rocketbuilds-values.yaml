@@ -1,0 +1,25 @@
+settings:
+  aws:
+    defaultInstanceProfile: AmazonEKSNodeRole
+    clusterEndpoint: https://359F79CB2CF5B072D9A0C15777771CD5.gr7.us-west-2.eks.amazonaws.com
+    clusterName: rocketbuilds-dev
+# serviceAccount:
+#   annotations:
+#     eks.amazonaws.com/role-arn: arn:aws:iam::058264118225:role/AmazonEKSNodeRole
+nodeSelector:
+eks.amazonaws.com/nodegroup: rocketbuilds-managed-ng-01
+affinity:
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+    - weight: 100
+      podAffinityTerm:
+        labelSelector:
+          matchExpressions:
+          - key: karpenter
+            operator: In
+            values:
+            - controller
+        topologyKey: topology.kubernetes.io/zone
+replicas: 1
+logLevel: debug
+

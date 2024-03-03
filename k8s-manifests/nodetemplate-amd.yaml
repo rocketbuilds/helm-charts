@@ -1,0 +1,23 @@
+apiVersion: karpenter.k8s.aws/v1alpha1
+kind: AWSNodeTemplate
+metadata:
+  name: bottlerocket-amd64-template
+spec:
+  amiFamily: Bottlerocket
+  blockDeviceMappings:
+    - deviceName: /dev/xvda
+      ebs:
+        deleteOnTermination: true
+        volumeSize: 4Gi
+        volumeType: gp3
+    - deviceName: /dev/xvdb
+      ebs:
+        deleteOnTermination: true
+        volumeSize: 20Gi
+        volumeType: gp3
+  securityGroupSelector:
+    Name: eks-cluster-sg-rocketbuilds-dev-666410015
+  subnetSelector:
+    public_subnet: 'true'
+  tags:
+    Name: meskalero-eks-dev-aFpZLcy2-karpenter-x86

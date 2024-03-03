@@ -1,0 +1,26 @@
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: amd64-ondemand-provisioner
+spec:
+  consolidation:
+    enabled: true
+  labels:
+    arch: x86
+    created_by: karpenter
+    provisioner: x86-ondemand-provisioner
+  providerRef:
+    name: bottlerocket-amd64-template
+  requirements:
+    - key: kubernetes.io/arch
+      operator: In
+      values:
+        - amd64
+    - key: karpenter.sh/capacity-type
+      operator: In
+      values:
+        - on-demand
+    - key: kubernetes.io/os
+      operator: In
+      values:
+        - linux
