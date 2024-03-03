@@ -1,9 +1,26 @@
 apiVersion: v1
 entries:
+  arc-controller:
+  - apiVersion: v2
+    appVersion: 0.8.1
+    created: "2024-03-03T21:12:27.951621+05:30"
+    description: A Helm chart for install actions-runner-controller CRD
+    digest: 6058b2af77a6d8833385588b3fb446cf538d9cd48c84ea35ba5556fb92804953
+    home: https://github.com/actions/actions-runner-controller
+    maintainers:
+    - name: actions
+      url: https://github.com/actions
+    name: arc-controller
+    sources:
+    - https://github.com/actions/actions-runner-controller
+    type: application
+    urls:
+    - arc-controller-0.8.1.tgz
+    version: 0.8.1
   demo:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-03-03T13:01:40.062+05:30"
+    created: "2024-03-03T21:12:27.952192+05:30"
     description: A Helm chart for Kubernetes
     digest: 8305f65f15cd2a62148451954ef36f26a4cfb4184c81b1d1e625583aa3cb6e2f
     name: demo
@@ -11,4 +28,4 @@ entries:
     urls:
     - demo-0.1.0.tgz
     version: 0.1.0
-generated: "2024-03-03T13:01:40.061144+05:30"
+generated: "2024-03-03T21:12:27.944864+05:30"
