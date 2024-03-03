@@ -1,0 +1,106 @@
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  annotations:
+    meta.helm.sh/release-name: arm64-ondemand-provisioner
+    meta.helm.sh/release-namespace: karpenter
+  creationTimestamp: '2023-08-21T16:17:46Z'
+  generation: 5
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  managedFields:
+    - apiVersion: karpenter.sh/v1alpha5
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:meta.helm.sh/release-name: {}
+            f:meta.helm.sh/release-namespace: {}
+          f:labels:
+            .: {}
+            f:app.kubernetes.io/managed-by: {}
+        f:spec:
+          .: {}
+          f:consolidation:
+            .: {}
+            f:enabled: {}
+          f:labels:
+            .: {}
+            f:arch: {}
+            f:created_by: {}
+            f:provisioner: {}
+          f:providerRef:
+            .: {}
+            f:name: {}
+          f:requirements: {}
+      manager: terraform-provider-helm_v2.6.0_x5
+      operation: Update
+      time: '2023-11-17T13:48:12Z'
+    - apiVersion: karpenter.sh/v1alpha5
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          .: {}
+          f:resources:
+            .: {}
+            f:attachable-volumes-aws-ebs: {}
+            f:cpu: {}
+            f:ephemeral-storage: {}
+            f:memory: {}
+            f:pods: {}
+      manager: karpenter
+      operation: Update
+      subresource: status
+      time: '2024-03-03T10:03:12Z'
+  name: arm64-ondemand-provisioner
+  resourceVersion: '660413747'
+  uid: e9752f5d-e28a-467c-8f44-6067f6d39961
+  selfLink: /apis/karpenter.sh/v1alpha5/provisioners/arm64-ondemand-provisioner
+status:
+  resources:
+    attachable-volumes-aws-ebs: '390'
+    cpu: '22'
+    ephemeral-storage: 206190920Ki
+    memory: 89818168Ki
+    pods: '252'
+spec:
+  consolidation:
+    enabled: true
+  labels:
+    arch: arm64
+    created_by: karpenter
+    provisioner: arm64-ondemand-provisioner
+  providerRef:
+    name: bottlerocket-arm64-template
+  requirements:
+    - key: kubernetes.io/arch
+      operator: In
+      values:
+        - arm64
+    - key: karpenter.sh/capacity-type
+      operator: In
+      values:
+        - spot
+        - on-demand
+    - key: karpenter.k8s.aws/instance-family
+      operator: NotIn
+      values:
+        - c1
+        - cc1
+        - cc2
+        - cg1
+        - cg2
+        - cr1
+        - g1
+        - g2
+        - hi1
+        - hs1
+        - m1
+        - m2
+        - m3
+        - t1
+    - key: kubernetes.io/os
+      operator: In
+      values:
+        - linux

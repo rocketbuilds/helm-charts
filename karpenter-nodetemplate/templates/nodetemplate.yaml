@@ -1,0 +1,30 @@
+{{- if .Values.NodeTemplate.create }}
+apiVersion: karpenter.k8s.aws/v1alpha1
+kind: AWSNodeTemplate
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  {{- with .Values.NodeTemplate.subnetSelector }}
+    subnetSelector:
+      {{- toYaml . | nindent 6 }}
+  {{- end }}
+  {{- with .Values.NodeTemplate.securityGroupSelector }}
+    securityGroupSelector:
+      {{- toYaml . | nindent 6 }}
+  {{- end }}
+  {{ if .Values.NodeTemplate.instanceProfile }}
+    instanceProfile: {{ .Values.NodeTemplate.instanceProfile }}         # optional, overrides the node's identity from global settings
+  {{- end }}
+    amiFamily: {{ .Values.NodeTemplate.amiFamily }}
+  {{ if .Values.NodeTemplate.amiSelector }}
+    amiSelector: {{ .Values.NodeTemplate.amiSelector }}
+  {{- end }}
+  {{- with .Values.NodeTemplate.tags }}
+    tags:                  # optional, propagates tags to underlying EC2 resources
+      {{- toYaml . | nindent 6 }}
+  {{- end }}
+  {{- with .Values.NodeTemplate.blockDeviceMappings }}  
+    blockDeviceMappings:    # optional, configures storage devices for the instance
+      {{- toYaml . | nindent 6 }}
+  {{- end }}
+{{- end }}
