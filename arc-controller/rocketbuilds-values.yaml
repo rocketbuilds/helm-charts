@@ -67,8 +67,7 @@ resources: {}
 #   memory: 128Mi
 
 nodeSelector:
-  arch: x86
-  provisioner: x86-ondemand-provisioner
+  eks.amazonaws.com/nodegroup: rocketbuilds-managed-ng-01
 
 tolerations: []
 
