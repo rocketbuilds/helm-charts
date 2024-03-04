@@ -7,7 +7,7 @@ settings:
 #   annotations:
 #     eks.amazonaws.com/role-arn: arn:aws:iam::058264118225:role/AmazonEKSNodeRole
 nodeSelector:
-eks.amazonaws.com/nodegroup: rocketbuilds-managed-ng-01
+  eks.amazonaws.com/nodegroup: rocketbuilds-managed-ng-01
 affinity:
   podAntiAffinity:
     preferredDuringSchedulingIgnoredDuringExecution:
