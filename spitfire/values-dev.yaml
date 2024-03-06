@@ -43,7 +43,7 @@ ingress:
               port:
                 name: http
   tls:
-   - secretName: chart-example-tls
+   - secretName: spitfire-tls
      hosts:
        - spitfire.dev.rocketbuildlabs.com
 
