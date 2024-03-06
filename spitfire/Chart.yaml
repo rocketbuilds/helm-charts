@@ -1,0 +1,6 @@
+apiVersion: v2
+name: spitfire
+description: A Helm chart Spitfire service
+type: application
+version: 0.0.1
+appVersion: "0.0.1"
