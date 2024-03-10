@@ -42,10 +42,20 @@ ingress:
               name: cosmodrome
               port:
                 name: http
+    - host: app.dev.rocketbuildlabs.com
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: cosmodrome
+              port:
+                name: http
   tls:
    - secretName: cosmodrome-tls
      hosts:
        - cosmodrome.dev.rocketbuildlabs.com
+       - app.dev.rocketbuildlabs.com
 
 resources: {}
 
