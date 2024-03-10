@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: 058264118225.dkr.ecr.us-west-2.amazonaws.com/cosmodrome
   pullPolicy: IfNotPresent
-  tag: cosmodrome-2
+  tag: cosmodrome-3
 
 serviceAccount:
   create: true
