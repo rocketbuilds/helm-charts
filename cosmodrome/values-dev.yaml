@@ -1,0 +1,65 @@
+replicaCount: 1
+
+image:
+  repository: 058264118225.dkr.ecr.us-west-2.amazonaws.com/cosmodrome
+  pullPolicy: IfNotPresent
+  tag: cosmodrome-2
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  hosts:
+    - host: cosmodrome.dev.rocketbuildlabs.com
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: cosmodrome
+              port:
+                name: http
+  tls:
+   - secretName: cosmodrome-tls
+     hosts:
+       - cosmodrome.dev.rocketbuildlabs.com
+
+resources: {}
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector:
+  arch: x86
+  provisioner: x86-ondemand-provisioner
+
+tolerations: []
+
+affinity: {}
