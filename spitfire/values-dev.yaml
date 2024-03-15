@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: 058264118225.dkr.ecr.us-west-2.amazonaws.com/spitfire
   pullPolicy: IfNotPresent
-  tag: 122
+  tag: 123
 
 serviceAccount:
   create: true
