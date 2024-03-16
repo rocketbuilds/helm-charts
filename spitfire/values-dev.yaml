@@ -57,7 +57,7 @@ autoscaling:
   # targetMemoryUtilizationPercentage: 80
 
 nodeSelector:
-  arch: x86
+  arch: x86-int
   provisioner: x86-ondemand-provisioner
 
 tolerations: []
