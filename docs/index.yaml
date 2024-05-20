@@ -3,7 +3,7 @@ entries:
   arc-controller:
   - apiVersion: v2
     appVersion: 0.8.1
-    created: "2024-05-19T21:10:14.873546+05:30"
+    created: "2024-05-20T09:19:51.275146+05:30"
     description: A Helm chart for install actions-runner-controller CRD
     digest: 6058b2af77a6d8833385588b3fb446cf538d9cd48c84ea35ba5556fb92804953
     home: https://github.com/actions/actions-runner-controller
@@ -20,7 +20,7 @@ entries:
   demo:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-05-19T21:10:14.874155+05:30"
+    created: "2024-05-20T09:19:51.275706+05:30"
     description: A Helm chart for Kubernetes
     digest: 8305f65f15cd2a62148451954ef36f26a4cfb4184c81b1d1e625583aa3cb6e2f
     name: demo
@@ -28,10 +28,20 @@ entries:
     urls:
     - demo-0.1.0.tgz
     version: 0.1.0
+  karpenter-nodetemplate:
+  - apiVersion: v2
+    appVersion: 0.27.1
+    created: "2024-05-20T09:19:51.276285+05:30"
+    description: A Helm chart for Karpenter AWSNodeTemplate CRD
+    digest: aad032dbfefbb821c6e97855b7875a64387ba2ee8a364da6f9cf2fa02e134b33
+    name: karpenter-nodetemplate
+    urls:
+    - karpenter-nodetemplate-0.1.0.tgz
+    version: 0.1.0
   letsencrypt-clusterissuer:
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2024-05-19T21:10:14.874406+05:30"
+    created: "2024-05-20T09:19:51.276878+05:30"
     description: A Helm chart for LetsEncrypt clusterissuer
     digest: 30bc32d41d7f716a893edfcd7b80131fde69857920b15da581841bc2dbb487e7
     name: letsencrypt-clusterissuer
@@ -39,4 +49,4 @@ entries:
     urls:
     - letsencrypt-clusterissuer-0.1.0.tgz
     version: 0.1.0
-generated: "2024-05-19T21:10:14.86477+05:30"
+generated: "2024-05-20T09:19:51.26659+05:30"
